@@ -1,20 +1,26 @@
+import java.util.ArrayList;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    StringBuilder storytelling= new StringBuilder();
-    ArrayList<Thread> dragos= new ArrayList<>();
-    for(int i=0; i<3; i++){
-        Thread t= new Thread(new D_SputaFuoco(String.valueOf(i)));
-        dragos.add(t);
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Thread> dragos = new ArrayList<>();
+        for (int i = 0; (i < 3); i++) {
+            Thread t = new Thread(new D_SputaFuoco(String.valueOf(i)));
+            dragos.add(t);
+        }
+        Thread sangiorgio = new Thread(new Cavaliere("giorgio", dragos.get(1)));
+        for (Thread t : dragos) {
+            t.start();
+        }
+        System.out.println("i draghi sono partiti per distruggere i villaggi");
+        sangiorgio.start();
+        try {
+            sangiorgio.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("il cavaliere ha atterrato il drago");
+
     }
-
-    Thread sanGiorgio=new Thread(new Cavalliere("giorgio", dragos.get(1)));
-    for(Thread t:dragos){
-        t.start();
-    }
-
-    System.out.println("draghi partiti");
-
-    sanGiorgio.start();
-
 }
