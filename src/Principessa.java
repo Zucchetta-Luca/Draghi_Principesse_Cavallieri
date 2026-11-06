@@ -1,13 +1,26 @@
 public class Principessa {
     private String nome;
     private Drago carceriere;
+    private String stato;
+
     public Principessa(String nome) {
         this.nome = nome;
+        this.stato = "Libera";
     }
+
     public Drago getCarceriere() {
         return carceriere;
     }
+
     public void setCarceriere(Drago carceriere) {
         this.carceriere = carceriere;
+    }
+
+    public String getStato() {
+        return stato;
+    }
+
+    public void setStato(String stato) {
+        this.stato = stato;
     }
 }
